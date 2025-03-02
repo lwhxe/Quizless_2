@@ -7,7 +7,9 @@ Additional features may be added in later updates.
 
 --- 
 ### Implementation
-windows.h is used for reading user input. <br>
+windows.h is used for reading user input and other cmd related tasks. <br>
+iostream is used for io. <br>
+fstream is used for serialization.
 
 ---
 Please install using tutorial written each of the releases.
