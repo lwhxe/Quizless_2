@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <windows.h>
 
 char* CLS = (char*)"\033[H\033[J";
@@ -246,6 +245,20 @@ void cqmenu_action(int selected) {
 	
 		switch (quiz.qtype[quiz.nquestions]) {
 		case 0:
+			char answer[TEXTMAX];
+			do {
+				printf("%sWhat is the answer to your question?\n ", CLS);
+					
+				fgets(answer, sizeof(answer), stdin);
+
+				size_t len = strlen(answer);
+				if (len > 0 && answer[len - 1] == '\n') {
+					answer[len - 1] = '\0';
+				}
+			} while (strlen(answer) == 0);
+
+			memcpy(quiz.choice[quiz.nquestions][0], answer, sizeof(char) * TEXTMAX);
+
 			break;
 		case 1:
 			break;
@@ -264,7 +277,7 @@ void cqmenu_action(int selected) {
 			break;
 		}
 
-		Sleep(3000);
+		Sleep(150);
 
 		break;
 	}
